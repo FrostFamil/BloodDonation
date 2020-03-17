@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import Navigator from './navigations';
-import LoginScreen from './scenes/login/LoginScreen';
+import LoginScreen from './scenes/LoginScreen';
 
 export default function App() {
   return (

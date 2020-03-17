@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, Image, TextInput, Button, Text} from 'react-native';
 
-const logoImage = require('../../assets/logoImage.png');
+const logoImage = require('../assets/logoImage.png');
 
 class LoginScreen extends Component {
   onLoginButtonPressed = () => {
@@ -12,7 +12,7 @@ class LoginScreen extends Component {
     return (
       <View
         style={{
-          height: '100%',
+          height: '80%',
           width: '100%',
           alignItems: 'center',
           justifyContent: 'center',

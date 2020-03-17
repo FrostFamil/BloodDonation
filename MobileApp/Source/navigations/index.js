@@ -4,7 +4,7 @@ import AuthNavigator from './auth-navigator';
 
 const RootNavigator = createSwitchNavigator(
   {
-    Auth: AuthNavigator,
+    Auth: AuthNavigator
   },
   {
     initialRouteName: 'Auth',
