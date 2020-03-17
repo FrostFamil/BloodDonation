@@ -5,7 +5,7 @@ const logoImage = require('../assets/logoImage.png');
 
 class LoginScreen extends Component {
   onLoginButtonPressed = () => {
-    alert('Log In button pressed');
+    this.props.navigation.navigate('Home')
   };
 
   render() {
