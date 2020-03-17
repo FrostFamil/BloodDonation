@@ -29,9 +29,9 @@ class LoginScreen extends Component {
             resizeMode="contain"
             source={logoImage}
           />
-          <View style={{width: '80%', height: '10%', justifyContent: 'space-between'}}>
+          <View style={{width: '80%', height: '13%', justifyContent: 'space-between'}}>
               <TextInput placeholder="Email" style={{borderBottomColor: 'black', borderBottomWidth: 0.5}}/>
-              <TextInput placeholder="Password" style={{borderBottomColor: 'black', borderBottomWidth: 0.5}}/>
+              <TextInput placeholder="Password" secureTextEntry style={{borderBottomColor: 'black', borderBottomWidth: 0.5}}/>
           </View>
           <View style={{width: '100%', alignItems: 'center'}}>
             <Button
