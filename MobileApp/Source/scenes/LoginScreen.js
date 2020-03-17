@@ -1,18 +1,18 @@
 import React, {Component} from 'react';
 import {View, Image, TextInput, Button, Text} from 'react-native';
 
-const logoImage = require('../../assets/logoImage.png');
+const logoImage = require('../assets/logoImage.png');
 
 class LoginScreen extends Component {
   onLoginButtonPressed = () => {
-    alert('Log In button pressed');
+    this.props.navigation.navigate('Home')
   };
 
   render() {
     return (
       <View
         style={{
-          height: '100%',
+          height: '80%',
           width: '100%',
           alignItems: 'center',
           justifyContent: 'center',
@@ -29,9 +29,9 @@ class LoginScreen extends Component {
             resizeMode="contain"
             source={logoImage}
           />
-          <View style={{width: '80%', height: '10%', justifyContent: 'space-between'}}>
+          <View style={{width: '80%', height: '13%', justifyContent: 'space-between'}}>
               <TextInput placeholder="Email" style={{borderBottomColor: 'black', borderBottomWidth: 0.5}}/>
-              <TextInput placeholder="Password" style={{borderBottomColor: 'black', borderBottomWidth: 0.5}}/>
+              <TextInput placeholder="Password" secureTextEntry style={{borderBottomColor: 'black', borderBottomWidth: 0.5}}/>
           </View>
           <View style={{width: '100%', alignItems: 'center'}}>
             <Button
