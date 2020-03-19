@@ -4,9 +4,16 @@ import {View, Image, TextInput, Button, Text} from 'react-native';
 const logoImage = require('../assets/logoImage.png');
 
 class LoginScreen extends Component {
+
+  state = {
+    email: '',
+    password: ''
+  }
+
   onLoginButtonPressed = () => {
     this.props.navigation.navigate('Home')
   };
+
 
   render() {
     return (
@@ -30,11 +37,24 @@ class LoginScreen extends Component {
             source={logoImage}
           />
           <View style={{width: '80%', height: '13%', justifyContent: 'space-between'}}>
-              <TextInput placeholder="Email" style={{borderBottomColor: 'black', borderBottomWidth: 0.5}}/>
-              <TextInput placeholder="Password" secureTextEntry style={{borderBottomColor: 'black', borderBottomWidth: 0.5}}/>
+              <TextInput 
+                testID="email" 
+                placeholder="Email" 
+                style={{borderBottomColor: 'black', borderBottomWidth: 0.5}}
+                value={this.state.email}
+                onChangeText={text => this.setState({email: text})}
+              />
+              <TextInput 
+                testID="password" 
+                placeholder="Password" 
+                secureTextEntry style={{borderBottomColor: 'black', borderBottomWidth: 0.5}}
+                value={this.state.password}
+                onChangeText={text => this.setState({password: text})}
+              />
           </View>
           <View style={{width: '100%', alignItems: 'center'}}>
             <Button
+              testID="loginButton"
               title="Log In"
               style={{
                 borderRadius: 20,
