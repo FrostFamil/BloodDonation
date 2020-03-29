@@ -1,1 +1,17 @@
-code goes here //  index.js tasks.js users.js
+const router = require('express').Router();
+const authController = require('../controllers/auth');
+
+router.post('/user/register', authController.register);
+
+router.post('/user/login', authController.login);
+
+router.post('/hospital/register', authController.hospRegister);
+
+router.post('/hospital/login', authController.hospLogin);
+
+module.exports = router;
+
+
+
+
+
