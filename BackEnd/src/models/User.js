@@ -4,14 +4,14 @@ const userSchema = new mongoose.Schema({
     first_name: {
         type: String,
         required: true,
-        min: 6,
+        min: 2,
         max: 127
     },
 
     last_name: {
         type: String,
         required: true,
-        min: 6,
+        min: 2,
         max: 127
     },
 

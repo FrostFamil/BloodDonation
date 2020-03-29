@@ -4,7 +4,7 @@ const hospitalSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-        min: 6,
+        min: 2,
         max: 255
     },
 

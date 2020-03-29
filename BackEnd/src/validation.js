@@ -7,18 +7,18 @@ const registerValidationUser = (data) => {
     const schema = Joi.object({
         first_name: Joi.string()
             .alphanum()
-            .min(3)
-            .max(30)
+            .min(2)
+            .max(127)
             .required(),
 
         last_name: Joi.string()
             .alphanum()
-            .min(3)
-            .max(30)
+            .min(2)
+            .max(127)
             .required(),
     
         email: Joi.string()
-            .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net','ru', 'hu', 'io'] } }),
+            .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net','ru', 'hu', 'io', 'az', 'test'] } }),
     
     
         password: Joi.string()
@@ -57,12 +57,12 @@ const registerValidationHospital = (data) => {
     const schema = Joi.object({
         name: Joi.string()
             .alphanum()
-            .min(3)
-            .max(30)
+            .min(2)
+            .max(255)
             .required(),
     
         email: Joi.string()
-            .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net','ru', 'hu', 'io'] } }),
+            .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net','ru', 'hu', 'io', 'az', 'test'] } }),
     
     
         password: Joi.string()
@@ -84,7 +84,7 @@ const registerValidationHospital = (data) => {
 const loginValidation = (data) => {
     const schema = Joi.object({
         email: Joi.string()
-            .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net','ru', 'hu', 'io'] } }),
+            .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net','ru', 'hu', 'io', 'az', 'test'] } }),
        
         password: Joi.string()
             .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$'))
