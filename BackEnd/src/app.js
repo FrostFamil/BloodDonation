@@ -28,7 +28,7 @@ app.use(express.json());
 
 
 //Route Middleeware
-app.use('/api/user', authRoute);
+app.use('/api', authRoute);
 
 
 
