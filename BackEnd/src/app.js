@@ -36,6 +36,8 @@ app.use('/api', authRoute);
 app.listen(3000, () => console.log('Server is Running'));
 
 
+module.exports = app;
+
 
 
 

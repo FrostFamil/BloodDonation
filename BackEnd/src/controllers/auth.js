@@ -34,7 +34,7 @@ exports.register = (async (req,res) => {
 
      try {
          const savedUser = await user.save();
-         res.send(savedUser);
+         res.status(200).send(savedUser);
      } catch (error) {
          res.status(400).send(error);
 }
@@ -62,7 +62,7 @@ exports.login = (async (req,res) => {
     if(!isPassValid)
        return res.status(400).send('Password is incorrect!');
     
-    res.send('Logged in!');
+    res.status(200).send('Logged in!');
 
 
     
@@ -98,7 +98,7 @@ exports.hospRegister = (async (req,res) => {
 
      try {
          const savedHospital = await hospital.save();
-         res.send(savedHospital);
+         res.status(200).send(savedHospital);
      } catch (error) {
          res.status(400).send(error);
 }
@@ -125,7 +125,7 @@ exports.hospLogin = (async (req,res) => {
     if(!isPassValid)
        return res.status(400).send('Password is incorrect!');
     
-    res.send('Logged in!');
+    res.status(200).send('Logged in!');
   
 });
 

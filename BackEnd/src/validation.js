@@ -56,7 +56,6 @@ const registerValidationUser = (data) => {
 const registerValidationHospital = (data) => {
     const schema = Joi.object({
         name: Joi.string()
-            .alphanum()
             .min(2)
             .max(255)
             .required(),
