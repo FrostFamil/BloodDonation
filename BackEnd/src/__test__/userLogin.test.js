@@ -1,6 +1,6 @@
 const supertest = require('supertest');
 //const app = require('../app');
-const deployedApp = 'http://127.0.0.1:3000/api'; //this is for deployed backend url
+const deployedApp = 'http://localhost:3000/api'; //this is for deployed backend url
 
 describe("Testing the authentication API ENDPOINT", () => {
 
