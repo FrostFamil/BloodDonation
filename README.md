@@ -4,7 +4,7 @@ Here will be instructions for How to run the app on mobile phone, Web and backen
 
 Also we will add instructions for how to run tests on all 3 platforms.
 
-*For Running and Test App on Mobile Phone:
+*For Running and Testing App on Mobile Phone:
 
 1) Download Expo app to your mobile phone.
 2) Clone or download this project to your PC.
