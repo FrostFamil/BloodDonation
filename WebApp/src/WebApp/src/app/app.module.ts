@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RegistrationComponent } from './registration/registration.component';
 
 
 
@@ -16,7 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     LoginComponent,
     HeaderComponent,
-    routingComponents
+    routingComponents,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
