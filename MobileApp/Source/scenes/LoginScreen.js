@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, Image, TextInput, Button, Text} from 'react-native';
 
-const logoImage = require('../assets/logoImage.png');
+const logoImage = require('../assets/icon.png');
 
 class LoginScreen extends Component {
 
@@ -14,12 +14,16 @@ class LoginScreen extends Component {
     this.props.navigation.navigate('Home')
   };
 
+  onRegisterButtonPressed = () => {
+    this.props.navigation.navigate('Register')
+  };
 
   render() {
     return (
       <View
         style={{
-          height: '80%',
+          backgroundColor: 'white',
+          height: '100%',
           width: '100%',
           alignItems: 'center',
           justifyContent: 'center',
@@ -66,7 +70,7 @@ class LoginScreen extends Component {
             </Button>
             <Button
               title="Registration"
-              onPress={() => alert('Register button pressed')}
+              onPress={this.onRegisterButtonPressed}
               style={{
                 borderBottomColor: 'black',
                 borderBottomWidth: 1,
