@@ -8,7 +8,7 @@ describe("Testing the authentication API ENDPOINT", () => {
 		const response = await supertest(app).post('/api/user/login').send({
 			email: "test@test.com",
 	        password: "testtest"
-		});
+		}, 15000);
         
         expect(response.status).toBe(200);
     });
@@ -20,7 +20,7 @@ describe("Testing the authentication API ENDPOINT", () => {
 		const response = await supertest(app).post('/api/user/login').send({
 			email: "test@test.com",
 	        password: "testtes"
-		}, 5000);
+		}, 15000);
         
         expect(response.status).toBe(400);
     });
@@ -32,7 +32,7 @@ describe("Testing the authentication API ENDPOINT", () => {
 		const response = await supertest(app).post('/api/hospital/login').send({
 			email: "test@test.com",
 	        password: "testtest"
-		}, 5000);
+		}, 15000);
         
         expect(response.status).toBe(200);
     });
@@ -44,7 +44,7 @@ describe("Testing the authentication API ENDPOINT", () => {
 		const response = await supertest(app).post('/api/hospital/login').send({
 			email: "test@test.com",
 	        password: "testtes"
-		}, 5000);
+		}, 15000);
         
         expect(response.status).toBe(400);
     });
@@ -60,7 +60,7 @@ describe("Testing the authentication API ENDPOINT", () => {
             last_name: "test",
 			email: randomNumber + "@test.com",
 	        password: "tester"
-		}, 5000);
+		}, 15000);
         
         expect(response.status).toBe(200);
     });
@@ -75,7 +75,7 @@ describe("Testing the authentication API ENDPOINT", () => {
             name: "test Hospital",
 			email: randomNumber + "@test.com",
 	        password: "tester"
-		}, 5000);
+		}, 15000);
         
         expect(response.status).toBe(200);
     });
