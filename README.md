@@ -18,10 +18,8 @@ Also we will add instructions for how to run tests on all 3 platforms.
 
 1) Clone or download this project to your PC.
 2) Open BackEnd folder and in there open src folder.
-3) While inside src folder open 2 terminal in this directory first script is for build and run the server "build-run.sh".
-4) Second one is for running tests called "run-test.sh" the reason behind this is in order to do tests server should be        running
-5) Then after this command finished type "npm start".
-6) Done! backend ready to be used.
+3) While inside src folder open terminal in this directory and run the script in this file called "build-test-run.sh".
+4) Done! backend ready to be used.
 
 
 
