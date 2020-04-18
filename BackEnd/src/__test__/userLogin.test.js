@@ -1,12 +1,11 @@
 const supertest = require('supertest');
-//const app = require('../app');
-const deployedApp = 'http://localhost:3000/api'; //this is for deployed backend url
+const app = require('../app');
 
 describe("Testing the authentication API ENDPOINT", () => {
 
 	it("tests the user login route with sample correct user data", async () => {
 
-		const response = await supertest(deployedApp).post('/user/login').send({
+		const response = await supertest(app).post('/api/user/login').send({
 			email: "test@test.com",
 	        password: "testtest"
 		});
@@ -18,7 +17,7 @@ describe("Testing the authentication API ENDPOINT", () => {
 
     it("tests the user login route with sample false user data", async () => {
 
-		const response = await supertest(deployedApp).post('/user/login').send({
+		const response = await supertest(app).post('/api/user/login').send({
 			email: "test@test.com",
 	        password: "testtes"
 		});
@@ -30,7 +29,7 @@ describe("Testing the authentication API ENDPOINT", () => {
 
     it("tests the hospital login route with sample correct hospital login data", async () => {
 
-		const response = await supertest(deployedApp).post('/hospital/login').send({
+		const response = await supertest(app).post('/api/hospital/login').send({
 			email: "test@test.com",
 	        password: "testtest"
 		});
@@ -42,7 +41,7 @@ describe("Testing the authentication API ENDPOINT", () => {
 
     it("tests the hospital login route with sample false hospital login data", async () => {
 
-		const response = await supertest(deployedApp).post('/hospital/login').send({
+		const response = await supertest(app).post('/api/hospital/login').send({
 			email: "test@test.com",
 	        password: "testtes"
 		});
@@ -56,7 +55,7 @@ describe("Testing the authentication API ENDPOINT", () => {
 
         const randomNumber = Math.floor(Math.random() * 1000); 
 
-		const response = await supertest(deployedApp).post('/user/register').send({
+		const response = await supertest(app).post('/api/user/register').send({
             first_name: "testData",
             last_name: "test",
 			email: randomNumber + "@test.com",
@@ -72,7 +71,7 @@ describe("Testing the authentication API ENDPOINT", () => {
 
         const randomNumber = Math.floor(Math.random() * 1000); 
 
-		const response = await supertest(deployedApp).post('/hospital/register').send({
+		const response = await supertest(app).post('/api/hospital/register').send({
             name: "test Hospital",
 			email: randomNumber + "@test.com",
 	        password: "tester"
