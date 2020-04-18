@@ -9,6 +9,8 @@ router.post('/hospital/register', authController.hospRegister);
 
 router.post('/hospital/login', authController.hospLogin);
 
+router.get('/hospital/donations', authController.hospDonations);
+
 module.exports = router;
 
 
