@@ -2,6 +2,8 @@ const User = require('../models/User.js');
 const Hospital = require('../models/Hospital.js');
 const bcrypt = require('bcryptjs');
 const {registerValidationUser, registerValidationHospital ,loginValidation} = require('../validation')
+const jwt = require('jsonwebtoken');
+const checkAuth = require('../middlewares/check-auth');
 
 
 //USER register route ---------------------------------------------
@@ -114,18 +116,32 @@ exports.hospLogin = (async (req,res) => {
     
     //check if data provided is valid / if not raise error msg
     if(error)
-        res.status(400).send(error.details[0].message);
+        return res.status(400).send(error.details[0].message);
     
     
     const existsHospital = await Hospital.findOne({email: req.body.email});
     if(!existsHospital)
        return res.status(400).send('Email is not found!');
-    
+
+       
     const isPassValid = await bcrypt.compare(req.body.password, existsHospital.password);
     if(!isPassValid)
-       return res.status(400).send('Password is incorrect!');
-    
-    res.status(200).send('Logged in!');
+    return res.status(400).send('Password is incorrect!');
+       
+    // create and assign a token
+    const token = jwt.sign({_id: existsHospital.id}, process.env.TOKEN_SECRET, {expiresIn: '1h'});
+
+    res.status(200).json({
+        token: token,
+        expiresIn: 3600
+    });
   
+});
+
+exports.hospDonations = (checkAuth, async (req, res) => {
+    const donations = '';
+    res.status(200).json({
+        donations: donations
+    });
 });
 

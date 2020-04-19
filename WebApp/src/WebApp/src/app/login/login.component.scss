@@ -1,0 +1,20 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin-top: 50px;
+}
+
+.login-card {
+  width: 300px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mat-flat-button {
+  align-self: flex-end;
+}
