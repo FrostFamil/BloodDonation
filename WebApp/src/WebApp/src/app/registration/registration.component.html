@@ -3,6 +3,10 @@
   <mat-card class="registration-card">
     <form [formGroup]="registrationForm" (submit)="onRegister()">
       <mat-form-field class="example-full-width">
+        <mat-label>Name</mat-label>
+          <input matInput formControlName="name">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
         <mat-label>E-mail</mat-label>
           <input type="email" matInput formControlName="email" email>
           <mat-error *ngIf="!registrationForm.get('email').valid">
