@@ -169,7 +169,7 @@ class HomeScreen extends React.Component {
         </Block>
         <ScrollView showsVerticalScrollIndicator={false}>
           {requests.map(request => (
-            <TouchableOpacity activeOpacity={0.8} key={`request-${request.id}`}>
+            <TouchableOpacity activeOpacity={0.8} key={`request-${request.id}`} onPress={()=> this.props.navigation.navigate('Request')}>
               {this.renderRequest(request)}
             </TouchableOpacity>
           ))}

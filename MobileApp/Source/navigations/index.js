@@ -2,11 +2,13 @@ import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 
 import AuthNavigator from './auth-navigator';
 import HomeNavigator from './home-navigator';
+import RequestNavigator from './request-navigator';
 
 const RootNavigator = createSwitchNavigator(
   {
     Auth: AuthNavigator,
-    Home: HomeNavigator
+    Home: HomeNavigator,
+    Request: RequestNavigator
   },
   {
     initialRouteName: 'Auth',
