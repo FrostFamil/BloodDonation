@@ -58,13 +58,6 @@ class RegistrationScreen extends Component {
                 onChangeText={text => this.setState({lastName: text})}
             />
             <TextInput 
-                testID="lastName" 
-                placeholder="Last Name" 
-                style={{borderBottomColor: 'black', borderBottomWidth: 0.5}}
-                value={this.state.lastName}
-                onChangeText={text => this.setState({lastName: text})}
-            />
-            <TextInput 
                 testID="email" 
                 placeholder="Email" 
                 style={{borderBottomColor: 'black', borderBottomWidth: 0.5}}
