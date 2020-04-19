@@ -1,4 +1,6 @@
 import Block from './Block';
 import Text from './Text';
+import CardSection from './CardSection';
+import SettingInput from './SettingInput';
 
-export { Block, Text };
+export { Block, Text, CardSection, SettingInput };

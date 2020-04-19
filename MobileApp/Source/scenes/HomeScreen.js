@@ -87,7 +87,9 @@ class HomeScreen extends React.Component {
               Blood Requests
             </Text>
           </Block>
-          <Image style={styles.avatar} source={user.avatar} />
+          <TouchableOpacity onPress={()=> this.props.navigation.navigate('Profile')}>
+            <Image style={styles.avatar} source={user.avatar} />
+          </TouchableOpacity>
         </Block>
         <Block card shadow color="white" style={styles.headerChart}>
           <Block row space="between" style={{ paddingHorizontal: 30 }}>
