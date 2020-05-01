@@ -1,6 +1,10 @@
-import React, { Component } from 'react'
-import { Text, StyleSheet, View, Dimensions, TouchableOpacity, TouchableWithoutFeedback, Image } from 'react-native'
-import MapView, {Marker} from 'react-native-maps';
+/* eslint-disable react/no-unused-state */
+/* eslint-disable react/state-in-constructor */
+import React, { Component } from 'react';
+import {
+  Text, StyleSheet, View, Dimensions, TouchableOpacity, TouchableWithoutFeedback
+} from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
 import Modal from 'react-native-modal';
 import { FontAwesome, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 
@@ -13,13 +17,13 @@ class RequestScreen extends Component {
   }
 
   goBack = () => {
-      this.props.navigation.navigate('Home');
+    const { navigation } = this.props;
+    navigation.navigate('Home');
   }
 
-  renderParking = () => {
-    return (
-      <TouchableWithoutFeedback >
-        <View style={styles.parkings}>
+  renderParking = () => (
+    <TouchableWithoutFeedback>
+      <View style={styles.parkings}>
         <View style={[styles.parking, styles.shadow]}>
           <View style={styles.hours}>
             <Text style={styles.hoursTitle}>BloodDonation</Text>
@@ -30,26 +34,28 @@ class RequestScreen extends Component {
           <View style={styles.parkingInfoContainer}>
             <View style={styles.parkingInfo}>
               <View style={styles.parkingIcon}>
-                <Ionicons name='ios-star' size={16} color='#7D818A' />
+                <Ionicons name="ios-star" size={16} color="#7D818A" />
                 <Text style={{ marginLeft: 12 }}> 4.5</Text>
               </View>
             </View>
-            <TouchableOpacity style={styles.buy} onPress={() => this.setState({ activeModal: true })}>
+            <TouchableOpacity
+              style={styles.buy}
+              onPress={() => this.setState({ activeModal: true })}
+            >
               <View style={styles.buyTotal}>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                   <Text style={styles.buyTotalPrice}>More</Text>
                 </View>
               </View>
               <View style={styles.buyBtn}>
-                <FontAwesome name='angle-right' size={16 * 1.75} color='#FFFFFF' />
+                <FontAwesome name="angle-right" size={16 * 1.75} color="#FFFFFF" />
               </View>
             </TouchableOpacity>
           </View>
         </View>
-        </View>
-      </TouchableWithoutFeedback>
-    )
-  }
+      </View>
+    </TouchableWithoutFeedback>
+  )
 
   renderModal() {
     const { activeModal } = this.state;
@@ -61,7 +67,7 @@ class RequestScreen extends Component {
         isVisible
         useNativeDriver
         style={styles.modalContainer}
-        backdropColor='#C1BEC0'
+        backdropColor="#C1BEC0"
         onBackButtonPress={() => this.setState({ activeModal: null })}
         onBackdropPress={() => this.setState({ activeModal: null })}
         onSwipeComplete={() => this.setState({ activeModal: null })}
@@ -78,34 +84,34 @@ class RequestScreen extends Component {
             </Text>
           </View>
           <View style={styles.modalInfo}>
-            <View style={[styles.parkingIcon, {justifyContent: 'flex-start'} ]}>
-              <Ionicons name='ios-star' size={16 * 1.1} color='#7D818A' />
+            <View style={[styles.parkingIcon, { justifyContent: 'flex-start' }]}>
+              <Ionicons name="ios-star" size={16 * 1.1} color="#7D818A" />
               <Text style={{ fontSize: 16 * 1.15 }}>4.5</Text>
             </View>
-            <View style={[styles.parkingIcon, {justifyContent: 'flex-start'} ]}>
-              <Ionicons name='ios-pin' size={16 * 1.1} color='#7D818A' />
+            <View style={[styles.parkingIcon, { justifyContent: 'flex-start' }]}>
+              <Ionicons name="ios-pin" size={16 * 1.1} color="#7D818A" />
               <Text style={{ fontSize: 16 * 1.15 }}>Available</Text>
             </View>
           </View>
-            <View style={{ alignItems: 'center' }}>
-                <Text style={{ fontSize: 15, color: '#A5A5A5', paddingBottom: 5 }}>Information about Request</Text>
-            </View>
-            <View style={{flexDirection: "row", bottom: 5}}>
-               <Text style={{fontSize: 15, color: 'red'}}>Scheduled for: </Text>
-               <Text>11.05.2020</Text>
-            </View>
+          <View style={{ alignItems: 'center' }}>
+            <Text style={{ fontSize: 15, color: '#A5A5A5', paddingBottom: 5 }}>Information about Request</Text>
+          </View>
+          <View style={{ flexDirection: 'row', bottom: 5 }}>
+            <Text style={{ fontSize: 15, color: 'red' }}>Scheduled for: </Text>
+            <Text>11.05.2020</Text>
+          </View>
 
-            <View style={{ flexDirection: 'row', bottom: 5}}> 
-               <Text style={{ fontSize: 15, color: 'red'}}>Address: </Text>
-               <Text>Ehmedli</Text>
-            </View>
+          <View style={{ flexDirection: 'row', bottom: 5 }}>
+            <Text style={{ fontSize: 15, color: 'red' }}>Address: </Text>
+            <Text>Ehmedli</Text>
+          </View>
 
           <View>
             <TouchableOpacity style={styles.payBtn} onPress={() => this.goBack()}>
               <Text style={styles.payText}>
                 Go Back
               </Text>
-              <FontAwesome name='angle-right' size={16 * 1.75} color='#FFFFFF' />
+              <FontAwesome name="angle-right" size={16 * 1.75} color="#FFFFFF" />
             </TouchableOpacity>
           </View>
         </View>
@@ -114,7 +120,6 @@ class RequestScreen extends Component {
   }
 
   render() {
-
     return (
       <View style={styles.container}>
         <MapView
@@ -126,21 +131,21 @@ class RequestScreen extends Component {
             longitudeDelta: 0.0421,
           }}
         >
-          <Marker coordinate={{latitude: 40.376931, longitude: 49.823895}}>
+          <Marker coordinate={{ latitude: 40.376931, longitude: 49.823895 }}>
             <View style={styles.myMarker}>
               <View style={styles.myMarkerDot} />
             </View>
           </Marker>
 
-          <Marker coordinate={{latitude: 40.379473, longitude: 49.831744}}>
-            <MaterialCommunityIcons name="home-circle" size={27}/>
+          <Marker coordinate={{ latitude: 40.379473, longitude: 49.831744 }}>
+            <MaterialCommunityIcons name="home-circle" size={27} />
           </Marker>
 
         </MapView>
         {this.renderParking()}
         {this.renderModal()}
       </View>
-    )
+    );
   }
 }
 
@@ -187,7 +192,7 @@ const styles = StyleSheet.create({
   buy: {
     flex: 1,
     flexDirection: 'row',
-    paddingHorizontal: 12* 1.5,
+    paddingHorizontal: 12 * 1.5,
     paddingVertical: 12,
     backgroundColor: '#D83C54',
     borderRadius: 6,
@@ -324,36 +329,36 @@ const styles = StyleSheet.create({
     backgroundColor: '#3353FB'
   },
   profile: {
-		flex: 1,
-		flexDirection: 'row',
-		alignItems: 'center',
-		borderBottomWidth: 1,
-		borderBottomColor: '#777777',
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: '#777777',
   },
   imgView: {
-		flex: 1,
-		paddingLeft: 20,
-		paddingRight: 20,
-	},
-	img: {
-		height: 70,
-		width: 70,
-		borderRadius: 20,
+    flex: 1,
+    paddingLeft: 20,
+    paddingRight: 20,
+  },
+  img: {
+    height: 70,
+    width: 70,
+    borderRadius: 20,
   },
   profileText: {
-		flex: 3,
-		flexDirection: 'column',
-		justifyContent: 'center',
+    flex: 3,
+    flexDirection: 'column',
+    justifyContent: 'center',
   },
   name: {
-		fontSize: 20,
-		paddingBottom: 1,
-		color: 'black',
-		textAlign: 'left',
+    fontSize: 20,
+    paddingBottom: 1,
+    color: 'black',
+    textAlign: 'left',
   },
   email: {
     fontSize: 13,
-		color: 'black',
-		textAlign: 'left',
+    color: 'black',
+    textAlign: 'left',
   },
-})
+});

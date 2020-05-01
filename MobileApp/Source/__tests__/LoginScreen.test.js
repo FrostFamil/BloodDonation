@@ -1,11 +1,11 @@
 import React from 'react';
-import {render, fireEvent} from 'react-native-testing-library';
+import { render, fireEvent } from 'react-native-testing-library';
 import LoginScreen from '../scenes/LoginScreen';
 
 describe('Login', () => {
   describe('change text login', () => {
     it('change text email and password', () => {
-      const {getByTestId} = render(<LoginScreen />);
+      const { getByTestId } = render(<LoginScreen />);
 
       // use fireEvent change value TextInput
       fireEvent.changeText(getByTestId('email'), 'admin');

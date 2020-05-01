@@ -1,5 +1,7 @@
-import React, { Component } from 'react'
-import { StyleSheet, View } from 'react-native'
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/prefer-stateless-function */
+import React, { Component } from 'react';
+import { StyleSheet, View } from 'react-native';
 
 import * as theme from '../theme';
 
@@ -44,7 +46,7 @@ export default class Block extends Component {
       <View style={blockStyles} {...props}>
         {children}
       </View>
-    )
+    );
   }
 }
 
@@ -86,5 +88,5 @@ const styles = StyleSheet.create({
   black: { backgroundColor: theme.colors.black, },
   white: { backgroundColor: theme.colors.white, },
   gray: { backgroundColor: theme.colors.gray, },
-  gray2: { backgroundColor: theme.colors.gray2, } ,
-})
+  gray2: { backgroundColor: theme.colors.gray2, },
+});

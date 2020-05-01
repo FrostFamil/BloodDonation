@@ -1,7 +1,10 @@
+/* eslint-disable linebreak-style */
 import React from 'react';
 import { TextInput, View, Text } from 'react-native';
 
-const SettingInput = ({ label, value, onChangeText, placeholder, secureTextEntry }) => {
+const SettingInput = ({
+  label, value, onChangeText, placeholder, secureTextEntry
+}) => {
   const { inputStyle, labelStyle, containerStyle } = styles;
 
   return (
@@ -43,7 +46,6 @@ const styles = {
     alignItems: 'center'
   }
 };
-
 
 
 export default SettingInput;

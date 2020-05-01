@@ -1,4 +1,4 @@
-import {createStackNavigator} from 'react-navigation-stack';
+import { createStackNavigator } from 'react-navigation-stack';
 
 import ProfileScreen from '../scenes/ProfileScreen';
 
@@ -9,7 +9,7 @@ const ProfileNavigatorConfig = {
 };
 
 const RouteConfigs = {
-    Profile: ProfileScreen
+  Profile: ProfileScreen
 };
 
 const ProfileNavigator = createStackNavigator(RouteConfigs, ProfileNavigatorConfig);

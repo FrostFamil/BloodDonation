@@ -1,5 +1,7 @@
-import React, { Component } from 'react'
-import { Text, StyleSheet } from 'react-native'
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/prefer-stateless-function */
+import React, { Component } from 'react';
+import { Text, StyleSheet } from 'react-native';
 
 import * as theme from '../theme';
 
@@ -68,7 +70,7 @@ export default class Typography extends Component {
       <Text style={textStyles} {...props}>
         {children}
       </Text>
-    )
+    );
   }
 }
 
@@ -81,20 +83,20 @@ const styles = StyleSheet.create({
   },
   // variations
   bold: {
-    fontWeight: "bold",
-    fontFamily: "Montserrat-Bold"
+    fontWeight: 'bold',
+    fontFamily: 'Montserrat-Bold'
   },
   semibold: {
-    fontWeight: "500",
-    fontFamily: "Montserrat-SemiBold"
+    fontWeight: '500',
+    fontFamily: 'Montserrat-SemiBold'
   },
   light: {
-    fontWeight: "200",
-    fontFamily: "Montserrat-Light"
+    fontWeight: '200',
+    fontFamily: 'Montserrat-Light'
   },
   // position
-  center: { textAlign: "center" },
-  right: { textAlign: "right" },
+  center: { textAlign: 'center' },
+  right: { textAlign: 'right' },
   // colors
   accent: { color: theme.colors.accent },
   primary: { color: theme.colors.primary },

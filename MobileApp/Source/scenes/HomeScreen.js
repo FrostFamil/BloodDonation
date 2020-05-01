@@ -1,19 +1,24 @@
-import React from "react";
+/* eslint-disable global-require */
+/* eslint-disable class-methods-use-this */
+/* eslint-disable react/sort-comp */
+/* eslint-disable react/state-in-constructor */
+/* eslint-disable import/no-extraneous-dependencies */
+import React from 'react';
 import {
   SafeAreaView,
   StyleSheet,
   ScrollView,
   Image,
   TouchableOpacity
-} from "react-native";
-import * as Font from "expo-font";
+} from 'react-native';
+import * as Font from 'expo-font';
 import { LineChart, Path } from 'react-native-svg-charts';
-import { Line } from "react-native-svg";
+import { Line } from 'react-native-svg';
 import * as shape from 'd3-shape';
 
 import { Block, Text } from '../components';
-import * as theme from "../theme";
-import * as mocks from "../mocks";
+import * as theme from '../theme';
+import * as mocks from '../mocks';
 
 class HomeScreen extends React.Component {
   state = {
@@ -22,11 +27,11 @@ class HomeScreen extends React.Component {
 
   loadFonts() {
     return Font.loadAsync({
-      "Montserrat-Regular": require("../assets/fonts/Montserrat-Regular.ttf"),
-      "Montserrat-Bold": require("../assets/fonts/Montserrat-Bold.ttf"),
-      "Montserrat-SemiBold": require("../assets/fonts/Montserrat-SemiBold.ttf"),
-      "Montserrat-Medium": require("../assets/fonts/Montserrat-Medium.ttf"),
-      "Montserrat-Light": require("../assets/fonts/Montserrat-Light.ttf")
+      'Montserrat-Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
+      'Montserrat-Bold': require('../assets/fonts/Montserrat-Bold.ttf'),
+      'Montserrat-SemiBold': require('../assets/fonts/Montserrat-SemiBold.ttf'),
+      'Montserrat-Medium': require('../assets/fonts/Montserrat-Medium.ttf'),
+      'Montserrat-Light': require('../assets/fonts/Montserrat-Light.ttf')
     });
   }
 
@@ -60,14 +65,14 @@ class HomeScreen extends React.Component {
         }}
         contentInset={{ left: theme.sizes.base, right: theme.sizes.base }}
       >
-        <LineShadow belowChart={true} />
+        <LineShadow belowChart />
         <Line
           key="zero-axis"
           x1="0%"
           x2="100%"
           y1="50%"
           y2="50%"
-          belowChart={true}
+          belowChart
           stroke={theme.colors.gray}
           strokeDasharray={[2, 10]}
           strokeWidth={1}
@@ -77,7 +82,7 @@ class HomeScreen extends React.Component {
   }
 
   renderHeader() {
-    const { user } = this.props;
+    const { user, navigation } = this.props;
 
     return (
       <Block flex={0.42} column style={{ paddingHorizontal: 15 }}>
@@ -87,7 +92,7 @@ class HomeScreen extends React.Component {
               Blood Requests
             </Text>
           </Block>
-          <TouchableOpacity onPress={()=> this.props.navigation.navigate('Profile')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
             <Image style={styles.avatar} source={user.avatar} />
           </TouchableOpacity>
         </Block>
@@ -138,7 +143,7 @@ class HomeScreen extends React.Component {
           style={styles.requestStatus}
         >
           <Block flex={0.25} middle center color={theme.colors.primary}>
-            <Text small white style={{ textTransform: "uppercase" }}>
+            <Text small white style={{ textTransform: 'uppercase' }}>
               {request.priority}
             </Text>
           </Block>
@@ -151,7 +156,19 @@ class HomeScreen extends React.Component {
         <Block flex={0.75} column middle>
           <Text h3 style={{ paddingVertical: 8, }}>{request.name}</Text>
           <Text caption semibold>
-            {request.age}  •  {request.gender}  •  {request.distance}km  •  {request.time}hrs
+            {request.age}
+            {' '}
+            •
+            {' '}
+            {request.gender}
+            {' '}
+            •
+            {' '}
+            {request.distance}
+            km  •
+            {' '}
+            {request.time}
+            hrs
           </Text>
         </Block>
       </Block>
@@ -159,7 +176,7 @@ class HomeScreen extends React.Component {
   }
 
   renderRequests() {
-    const { requests } = this.props;
+    const { requests, navigation } = this.props;
 
     return (
       <Block flex={0.8} column color="gray2" style={styles.requests}>
@@ -170,8 +187,8 @@ class HomeScreen extends React.Component {
           </TouchableOpacity>
         </Block>
         <ScrollView showsVerticalScrollIndicator={false}>
-          {requests.map(request => (
-            <TouchableOpacity activeOpacity={0.8} key={`request-${request.id}`} onPress={()=> this.props.navigation.navigate('Request')}>
+          {requests.map((request) => (
+            <TouchableOpacity activeOpacity={0.8} key={`request-${request.id}`} onPress={() => navigation.navigate('Request')}>
               {this.renderRequest(request)}
             </TouchableOpacity>
           ))}
@@ -181,12 +198,13 @@ class HomeScreen extends React.Component {
   }
 
   render() {
-    if (!this.state.fontsLoaded) {
+    const { fontsLoaded } = this.state;
+    if (!fontsLoaded) {
       return (
         <Block center middle>
           <Image
             style={{ width: 140, height: 140 }}
-            source={require("../assets/icon.png")}
+            source={require('../assets/icon.png')}
           />
         </Block>
       );
@@ -241,7 +259,7 @@ const styles = StyleSheet.create({
   },
   requestStatus: {
     marginRight: 20,
-    overflow: "hidden",
+    overflow: 'hidden',
     height: 90
   }
 });

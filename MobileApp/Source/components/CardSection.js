@@ -1,14 +1,15 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import { View } from 'react-native';
 
 
-const CardSection = (props) => {
-  return (
-    <View style={[style.containerStyle, props.style]}>
-      {props.children}
-    </View>
-  );
-};
+const CardSection = (props) => (
+  // eslint-disable-next-line linebreak-style
+  <View style={[style.containerStyle, props.style]}>
+    {props.children}
+  </View>
+);
 
 const style = {
   containerStyle: {

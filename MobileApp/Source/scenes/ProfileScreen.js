@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import React, { Component } from 'react';
 import {
   View, Image, Text, TouchableOpacity
@@ -17,6 +18,10 @@ export default class ProfileScreen extends Component {
   }
 
   render() {
+    const {
+      fName, lName, email, phone
+    } = this.state;
+    const { navigation } = this.props;
     return (
       <View style={{ top: 100, justifyContent: 'center', alignItems: 'center' }}>
         <CardSection style={{ borderRadius: 30 }}>
@@ -31,7 +36,7 @@ export default class ProfileScreen extends Component {
             testID="fname"
             placeholder="First Name"
             label="First Name:"
-            value={this.state.fName}
+            value={fName}
             style={{ height: 40, width: 100 }}
             onChangeText={(text) => this.setState({ fName: text })}
           />
@@ -42,7 +47,7 @@ export default class ProfileScreen extends Component {
             testID="lname"
             placeholder="Last Name"
             label="Last Name:"
-            value={this.state.lName}
+            value={lName}
             style={{ height: 40, width: 100 }}
             onChangeText={(text) => this.setState({ lName: text })}
           />
@@ -53,7 +58,7 @@ export default class ProfileScreen extends Component {
             testID="email"
             placeholder="user@gmail.com"
             label="Email:"
-            value={this.state.email}
+            value={email}
             style={{ height: 40, width: 100 }}
             onChangeText={(text) => this.setState({ email: text })}
           />
@@ -64,13 +69,13 @@ export default class ProfileScreen extends Component {
             testID="phone"
             placeholder="+(Country code) 50-465-34-43"
             label="Phone:"
-            value={this.state.phone}
+            value={phone}
             onChangeText={(text) => this.setState({ phone: text })}
           />
         </CardSection>
 
         <View style={styles.ButtonStyle}>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('Home')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Home')}>
             <Text style={{ fontSize: 30 }}>Back</Text>
           </TouchableOpacity>
         </View>

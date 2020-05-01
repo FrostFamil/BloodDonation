@@ -1,11 +1,11 @@
 import React from 'react';
-import {render, fireEvent} from 'react-native-testing-library';
+import { render, fireEvent } from 'react-native-testing-library';
 import RegisterScreen from '../scenes/RegisterScreen';
 
 describe('Register', () => {
   describe('Change input field content', () => {
     it('Change firstName input content', () => {
-      const {getByTestId} = render(<RegisterScreen />);
+      const { getByTestId } = render(<RegisterScreen />);
 
       // use fireEvent change value TextInput
       fireEvent.changeText(getByTestId('firstName'), 'Emin');
@@ -15,7 +15,7 @@ describe('Register', () => {
     });
 
     it('Change lastName input content', () => {
-      const {getByTestId} = render(<RegisterScreen />);
+      const { getByTestId } = render(<RegisterScreen />);
 
       // use fireEvent change value TextInput
       fireEvent.changeText(getByTestId('lastName'), 'Ahmadov');
@@ -25,7 +25,7 @@ describe('Register', () => {
     });
 
     it('Change email input content', () => {
-      const {getByTestId} = render(<RegisterScreen />);
+      const { getByTestId } = render(<RegisterScreen />);
 
       // use fireEvent change value TextInput
       fireEvent.changeText(getByTestId('email'), 'admin@gmail.com');
@@ -35,7 +35,7 @@ describe('Register', () => {
     });
 
     it('Change password input content', () => {
-      const {getByTestId} = render(<RegisterScreen />);
+      const { getByTestId } = render(<RegisterScreen />);
 
       // use fireEvent change value TextInput
       fireEvent.changeText(getByTestId('password'), 'adminpass');
@@ -45,7 +45,7 @@ describe('Register', () => {
     });
 
     it('Change confirmPassword input content', () => {
-      const {getByTestId} = render(<RegisterScreen />);
+      const { getByTestId } = render(<RegisterScreen />);
 
       // use fireEvent change value TextInput
       fireEvent.changeText(getByTestId('confirmPassword'), 'adminpass');
