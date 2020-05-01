@@ -6,6 +6,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
+    "lint": "eslint *.js **/*.js",
     "test": "jest"
   },
   "jest": {
@@ -17,7 +18,13 @@
   "dependencies": {
     "@expo/vector-icons": "^10.0.6",
     "@react-native-community/masked-view": "^0.1.7",
+    "babel-eslint": "^10.1.0",
     "d3-shape": "^1.3.7",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.19.0",
     "expo": "~36.0.0",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
