@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 
-const reuqestSchema = new mongoose.Schema({
+const requestSchema = new mongoose.Schema({
     hosp_name: {
         type: String,
         required: true,
@@ -43,7 +43,7 @@ const reuqestSchema = new mongoose.Schema({
 })
 
 
-module.exports = mongoose.model('Request', reuqestSchema);
+module.exports = mongoose.model('Request', requestSchema);
 
 
 
