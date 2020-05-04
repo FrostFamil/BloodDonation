@@ -1,7 +1,8 @@
 const User = require('../models/User.js');
 const Hospital = require('../models/Hospital.js');
 const bcrypt = require('bcryptjs');
-const {registerValidationUser, registerValidationHospital ,loginValidation} = require('../validation')
+const {registerValidationUser, registerValidationHospital} = require('../validation/registerValidation');
+const {loginValidation} = require('../validation/loginValidation');
 const jwt = require('jsonwebtoken');
 const checkAuth = require('../middlewares/check-auth');
 
