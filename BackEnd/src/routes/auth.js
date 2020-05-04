@@ -16,6 +16,8 @@ router.get('/hospital/createRequest', requestController.request);
 
 router.get('/user/fetchAllRequests', requestController.fetchAllRequests);
 
+router.delete('/hospital/deleteRequest', requestController.deleteRequest);
+
 module.exports = router;
 
 
