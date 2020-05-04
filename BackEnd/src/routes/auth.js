@@ -14,6 +14,8 @@ router.get('/hospital/donations', authController.hospDonations);
 
 router.get('/hospital/createRequest', requestController.request);
 
+router.get('/user/fetchAllRequests', requestController.fetchAllRequests);
+
 module.exports = router;
 
 

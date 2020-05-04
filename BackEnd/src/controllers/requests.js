@@ -33,6 +33,28 @@ exports.request = (async (req,res) => {
 
 
 
+exports.fetchAllRequests = (async (req,res) => {
+       Request.find().then(result => {
+          console.log(result);
+           return result;
+       })
+
+       .then(requests => {
+           res.status(200).json({
+             message: 'Fetched all requests successfully.',
+             requests: requests
+           });
+       })
+
+       .catch(error => {
+           if (!error.statusCode){
+               error.statusCode = 500;
+           }
+       });
+});
+
+
+
 
 
 
