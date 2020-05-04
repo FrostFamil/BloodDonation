@@ -1,6 +1,7 @@
 
 const Request = require('../models/Request');
 const {createRequestValidation} = require('../validation/requestValidation');
+const mongoose = require('mongoose');
 
 
 exports.request = (async (req,res) => {
@@ -51,6 +52,32 @@ exports.fetchAllRequests = (async (req,res) => {
                error.statusCode = 500;
            }
        });
+});
+
+
+//Offer.findOneAndRemove({_id : new mongoose.mongo.ObjectID(req.params.id)},
+
+exports.deleteRequest = (async (req,res) => {
+
+   try {
+    const existsRequest = await Request.findOne({_id: req.body.id});
+    if(!existsRequest)
+       return res.status(400).send('Request is not found!');      
+   } catch (error) {
+       return res.status(400).send(error.message);
+   }
+   
+   
+    Request.findByIdAndRemove(req.body.id)
+      .then(result => {
+        //console.log(result);
+        return res.status(200).json({ message: 'Request deleted. ', result: result });
+      })
+      .catch(err => {
+        if (!err.statusCode) {
+          err.statusCode = 500;
+        }
+      });
 });
 
 
