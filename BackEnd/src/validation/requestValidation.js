@@ -4,8 +4,17 @@ const Joi = require('@hapi/joi');
 //Create Request Validation ------------------------------
 const createRequestValidation = (data) => {
     const schema = Joi.object({
+        creator: Joi.string()
+        .required(),
+    
+        acceptor: Joi.string()
+        .required(),
+    
+        accepted: Joi.string(),
+    
+        finished: Joi.string(),
+
         hosp_name: Joi.string()
-            .alphanum()
             .min(2)
             .max(255)
             .required(),
