@@ -2,6 +2,7 @@
 const Request = require('../models/Request');
 const {createRequestValidation} = require('../validation/requestValidation');
 const mongoose = require('mongoose');
+const User = require('../models/User');
 
 
 exports.request = (async (req,res) => {
@@ -15,6 +16,8 @@ exports.request = (async (req,res) => {
 
     //create new request
     const request = new Request({
+        creator: req.body.creator,
+        acceptor: req.body.acceptor,
         hosp_name: req.body.hosp_name,
         first_name: req.body.first_name,
         last_name: req.body.last_name,
@@ -52,6 +55,105 @@ exports.fetchAllRequests = (async (req,res) => {
                error.statusCode = 500;
            }
        });
+});
+
+exports.fetchSpecificRequests = (async (req,res) => {
+  Request.find({creator: req.body.creator }).then(result => {
+     console.log(result);
+      return result;
+  })
+
+  .then(requests => {
+      res.status(200).json({
+        message: 'Fetched specific requests successfully.',
+        requests: requests
+      });
+  })
+
+  .catch(error => {
+      if (!error.statusCode){
+          error.statusCode = 500;
+      }
+  });
+});
+
+exports.acceptRequest = (async (req,res) => {
+
+  const requestIndex = req.body.requestIndex; 
+  const acceptor = req.body.acceptor;
+
+  Request.findOne({_id: requestIndex}).then(result => {
+
+      result.acceptor = acceptor;
+      result.accepted = 'Yes';
+
+      return result.save();
+  })
+  .then(requests => {
+      res.status(200).json({
+        message: 'Request Accepted',
+        requests: requests
+      });
+  })
+
+  .catch(error => {
+      if (!error.statusCode){
+          error.statusCode = 500;
+      }
+  });
+});
+
+exports.cancelRequest = (async (req,res) => {
+
+  const requestIndex = req.body.requestIndex; 
+  const creator = req.body.creator;
+
+  Request.findOne({_id: requestIndex}).then(result => {
+
+      result.acceptor = creator;
+      result.accepted = 'No';
+
+      return result.save();
+  })
+  .then(requests => {
+      res.status(200).json({
+        message: 'Request cancelled',
+        requests: requests
+      });
+  })
+
+  .catch(error => {
+      if (!error.statusCode){
+          error.statusCode = 500;
+      }
+  });
+});
+
+exports.managePoints = (async (req,res) => {
+  Request.findOne({_id: req.body.requestIndex}).then(result => {
+      return result;
+  })
+  .then(requests => {
+      
+    User.findOne({_id: requests.acceptor}).then(result => {
+      result.points = (parseInt(result.points) + 100).toString();
+
+      return result.save();
+    })
+    .catch(err => {
+      console.log(err);   
+    })
+  })
+  .then(requests => {
+    res.status(200).json({
+      message: 'points added'
+    });
+  })
+  .catch(error => {
+      if (!error.statusCode){
+          error.statusCode = 500;
+      }
+  });
 });
 
 

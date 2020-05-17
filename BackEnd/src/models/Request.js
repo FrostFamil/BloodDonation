@@ -1,7 +1,30 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 
-const requestSchema = new mongoose.Schema({
+const requestSchema = new Schema({
+    creator: {
+        type: Schema.Types.ObjectId,
+        ref: 'Hospital',
+        required: true
+    },
+
+    acceptor: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+
+    accepted: {
+        type: String,
+        default: 'No'
+    },
+
+    finished: {
+        type: String,
+        default: 'No'
+    },
+
     hosp_name: {
         type: String,
         required: true,
