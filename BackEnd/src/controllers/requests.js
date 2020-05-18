@@ -21,6 +21,7 @@ exports.request = (async (req,res) => {
         hosp_name: req.body.hosp_name,
         first_name: req.body.first_name,
         last_name: req.body.last_name,
+        gender: req.body.gender,
         age: req.body.age,
         blood_type: req.body.blood_type
     })
@@ -63,6 +64,27 @@ exports.fetchSpecificRequests = (async (req,res) => {
       return result;
   })
 
+  .then(requests => {
+      res.status(200).json({
+        message: 'Fetched specific requests successfully.',
+        requests: requests
+      });
+  })
+
+  .catch(error => {
+      if (!error.statusCode){
+          error.statusCode = 500;
+      }
+  });
+});
+
+exports.userFetchSpecificRequests = (async (req,res) => {
+  const acceptor = req.body.acceptor;
+
+  Request.find({acceptor: acceptor}).then(result => {
+     console.log(result);
+      return result;
+  })
   .then(requests => {
       res.status(200).json({
         message: 'Fetched specific requests successfully.',

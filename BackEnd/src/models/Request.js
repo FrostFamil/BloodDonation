@@ -46,6 +46,13 @@ const requestSchema = new Schema({
         max: 127
     },
 
+    gender: {
+        type: String,
+        required: true,
+        min: 2,
+        max: 127
+    },
+    
     age: {
         type: Number,
         required: true,
