@@ -20,6 +20,8 @@ router.post('/hospital/fetchSpecificRequests', requestController.fetchSpecificRe
 
 router.post('/user/userFetchSpecificRequests', requestController.userFetchSpecificRequests);
 
+router.post('/user/getUserData', requestController.getUserData);
+
 router.post('/user/acceptRequest', requestController.acceptRequest);
 
 router.post('/hospital/cancelRequest', requestController.cancelRequest);

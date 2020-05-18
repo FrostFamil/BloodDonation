@@ -204,6 +204,20 @@ exports.deleteRequest = (async (req,res) => {
       });
 });
 
+exports.getUserData = (async (req,res) => {
+
+   User.findById(req.body.userId)
+     .then(result => {
+       //console.log(result);
+       return res.status(200).json({ message: 'User fetched ', result: result });
+     })
+     .catch(err => {
+       if (!err.statusCode) {
+         err.statusCode = 500;
+       }
+     });
+});
+
 
 
 
