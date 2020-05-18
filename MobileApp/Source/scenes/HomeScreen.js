@@ -19,10 +19,14 @@ import * as shape from 'd3-shape';
 import { Block, Text } from '../components';
 import * as theme from '../theme';
 import * as mocks from '../mocks';
+import Requests from '../Requests/Requests';
+import AvailableRequests from '../Requests/AvailableRequests';
 
 class HomeScreen extends React.Component {
   state = {
-    fontsLoaded: false
+    fontsLoaded: false,
+    requests: [],
+    availableRequests: []
   };
 
   loadFonts() {
@@ -38,6 +42,27 @@ class HomeScreen extends React.Component {
   async componentDidMount() {
     await this.loadFonts();
     this.setState({ fontsLoaded: true });
+    const acceptor = global.userId;
+
+    Requests().then((res) => {
+      this.setState({ requests: res.requests });
+    });
+
+    AvailableRequests(acceptor).then((res) => {
+      this.setState({ availableRequests: res.requests });
+    });
+  }
+
+  refreshRequests = () => {
+    const acceptor = global.userId;
+
+    Requests().then((res) => {
+      this.setState({ requests: res.requests });
+    });
+
+    AvailableRequests(acceptor).then((res) => {
+      this.setState({ availableRequests: res.requests });
+    });
   }
 
   renderChart() {
@@ -83,6 +108,7 @@ class HomeScreen extends React.Component {
 
   renderHeader() {
     const { user, navigation } = this.props;
+    const { requests, availableRequests } = this.state;
 
     return (
       <Block flex={0.42} column style={{ paddingHorizontal: 15 }}>
@@ -99,16 +125,18 @@ class HomeScreen extends React.Component {
         <Block card shadow color="white" style={styles.headerChart}>
           <Block row space="between" style={{ paddingHorizontal: 30 }}>
             <Block flex={false} row center>
-              <Text h1>291</Text>
+              <Text h1>{requests.length - availableRequests.length}</Text>
               <Text caption bold tertiary style={{ paddingHorizontal: 10 }}>
-                -12%
+                +
+                {(3 / 4) * 100}
+                %
               </Text>
             </Block>
             <Block flex={false} row center>
               <Text caption bold primary style={{ paddingHorizontal: 10 }}>
-                +49%
+                +100%
               </Text>
-              <Text h1>481</Text>
+              <Text h1>{requests.length}</Text>
             </Block>
           </Block>
           <Block
@@ -144,17 +172,26 @@ class HomeScreen extends React.Component {
         >
           <Block flex={0.25} middle center color={theme.colors.primary}>
             <Text small white style={{ textTransform: 'uppercase' }}>
-              {request.priority}
+              URGENT
             </Text>
           </Block>
           <Block flex={0.7} center middle>
             <Text h2 white>
-              {request.bloodType}
+              {request.blood_type}
+            </Text>
+          </Block>
+          <Block flex={0.25} middle center color={theme.colors.primary}>
+            <Text small white style={{ textTransform: 'uppercase' }}>
+              {request.accepted === 'Yes' && request.acceptor === global.userId ? 'You Accepted' : 'Not Accepted'}
             </Text>
           </Block>
         </Block>
         <Block flex={0.75} column middle>
-          <Text h3 style={{ paddingVertical: 8, }}>{request.name}</Text>
+          <Text h3 style={{ paddingVertical: 8, }}>
+            {request.first_name}
+            {' '}
+            {request.last_name}
+          </Text>
           <Text caption semibold>
             {request.age}
             {' '}
@@ -164,11 +201,8 @@ class HomeScreen extends React.Component {
             {' '}
             •
             {' '}
-            {request.distance}
-            km  •
+            {request.hosp_name}
             {' '}
-            {request.time}
-            hrs
           </Text>
         </Block>
       </Block>
@@ -176,19 +210,20 @@ class HomeScreen extends React.Component {
   }
 
   renderRequests() {
-    const { requests, navigation } = this.props;
+    const { navigation } = this.props;
+    const { requests } = this.state;
 
     return (
       <Block flex={0.8} column color="gray2" style={styles.requests}>
         <Block flex={false} row space="between" style={styles.requestsHeader}>
           <Text light>Recent Updates</Text>
-          <TouchableOpacity activeOpacity={0.8}>
-            <Text semibold>View All</Text>
+          <TouchableOpacity activeOpacity={0.8} onPress={() => this.refreshRequests()}>
+            <Text semibold>Refresh</Text>
           </TouchableOpacity>
         </Block>
         <ScrollView showsVerticalScrollIndicator={false}>
           {requests.map((request) => (
-            <TouchableOpacity activeOpacity={0.8} key={`request-${request.id}`} onPress={() => navigation.navigate('Request')}>
+            <TouchableOpacity activeOpacity={0.8} key={`request-${request._id}`} onPress={() => navigation.navigate('Request')}>
               {this.renderRequest(request)}
             </TouchableOpacity>
           ))}

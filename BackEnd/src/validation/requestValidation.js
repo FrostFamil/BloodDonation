@@ -32,6 +32,12 @@ const createRequestValidation = (data) => {
             .max(127)
             .required(),
 
+        gender: Joi.string()
+            .alphanum()
+            .min(2)
+            .max(127)
+            .required(),
+
         age: Joi.number()
             .integer()
             .min(0)

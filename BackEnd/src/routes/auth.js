@@ -16,11 +16,15 @@ router.get('/hospital/createRequest', requestController.request);
 
 router.get('/user/fetchAllRequests', requestController.fetchAllRequests);
 
-router.get('/user/fetchSpecificRequests', requestController.fetchSpecificRequests);
+router.post('/hospital/fetchSpecificRequests', requestController.fetchSpecificRequests);
+
+router.post('/user/userFetchSpecificRequests', requestController.userFetchSpecificRequests);
+
+router.post('/user/getUserData', requestController.getUserData);
 
 router.post('/user/acceptRequest', requestController.acceptRequest);
 
-router.post('/user/cancelRequest', requestController.cancelRequest);
+router.post('/hospital/cancelRequest', requestController.cancelRequest);
 
 router.post('/hospital/managePoints', requestController.managePoints);
 

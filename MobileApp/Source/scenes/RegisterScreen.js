@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import {
   View, Image, Button, TextInput
 } from 'react-native';
+import RegisterRequest from '../Requests/RegisterRequest';
 
 const logoImage = require('../assets/icon.png');
 
@@ -13,9 +14,21 @@ class RegistrationScreen extends Component {
       firstName: '',
       lastName: '',
       email: '',
-      password: '',
-      confirmPassword: ''
+      password: ''
     };
+
+    registerPressed = () => {
+      const { navigation } = this.props;
+      const {
+        firstName, lastName, email, password
+      } = this.state;
+
+      RegisterRequest(firstName, lastName, email, password).then((res) => {
+        if (res) {
+          navigation.navigate('Login');
+        }
+      });
+    }
 
     render() {
       const { navigation } = this.props;
@@ -29,7 +42,7 @@ class RegistrationScreen extends Component {
             height: '100%',
             width: '100%',
             alignItems: 'center',
-            justifyContent: 'center',
+            justifyContent: 'flex-start',
           }}
         >
           <View
@@ -47,7 +60,7 @@ class RegistrationScreen extends Component {
             />
             <View
               style={{
-                height: '40%',
+                height: '25%',
                 width: '100%',
                 paddingHorizontal: '10%',
                 justifyContent: 'space-between',
@@ -81,13 +94,6 @@ class RegistrationScreen extends Component {
                 value={password}
                 onChangeText={(text) => this.setState({ password: text })}
               />
-              <TextInput
-                testID="confirmPassword"
-                placeholder="Confirm Password"
-                style={{ borderBottomColor: 'black', borderBottomWidth: 0.5 }}
-                value={confirmPassword}
-                onChangeText={(text) => this.setState({ confirmPassword: text })}
-              />
             </View>
             <View style={{ width: '100%', alignItems: 'center' }}>
               <Button
@@ -98,7 +104,7 @@ class RegistrationScreen extends Component {
                   width: '50%',
                   justifyContent: 'center',
                 }}
-                onPress={() => alert('Register button pressed')}
+                onPress={() => this.registerPressed()}
               >
                 Register
               </Button>

@@ -48,28 +48,36 @@ exports.register = (async (req,res) => {
 
 
 //USER login route ------------------------------------------------------
-exports.login = (async (req,res) => {
-    //check validation
-    const {error} = loginValidation(req.body);
-    
-    //check if data provided is valid / if not raise error msg
-    if(error)
-        res.status(400).send(error.details[0].message);
-    
-    
-    const existsUser = await User.findOne({email: req.body.email});
-    if(!existsUser)
-       return res.status(400).send('Email is not found!');
-    
-    const isPassValid = await bcrypt.compare(req.body.password, existsUser.password);
-    if(!isPassValid)
-       return res.status(400).send('Password is incorrect!');
-    
-    res.status(200).send('Logged in!');
+exports.login = (async (req, res, next) => {
+    const email = req.body.email;
+    const password = req.body.password;
 
-
-    
-});
+    let loadedUser;
+    User.findOne({ email: email })
+      .then(user => {
+        if (!user) {
+          const error = new Error('A user with this email could not be found.');
+          error.statusCode = 400;
+          throw error;
+        }
+        loadedUser = user;
+        return bcrypt.compare(password, user.password);
+      })
+      .then(isEqual => {
+        if (!isEqual) {
+          const error = new Error('Wrong password!');
+          error.statusCode = 400;
+          throw error;
+        }
+        res.status(200).json({ email: email, userId: loadedUser._id.toString() });
+      })
+      .catch(err => {
+        if (!err.statusCode) {
+          err.statusCode = 500;
+        }
+        next(err);
+      });
+  });
 
 
 //HOSPITAL register route ---------------------------------------------
