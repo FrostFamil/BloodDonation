@@ -14,32 +14,24 @@ const authRoute = require('./routes/auth');
  dotenv.config();
 
  // Add headers
-app.use(function (req, res, next) {
-
-  // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
-
-  // Request methods you wish to allow
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-  // Request headers you wish to allow
-  res.setHeader('Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, content-type, Accept, Authorization');
-
-  // Set to true if you need the website to include cookies in the requests sent
-  // to the API (e.g. in case you use sessions)
-  res.setHeader('Access-Control-Allow-Credentials', true);
-
-  // Pass to next layer of middleware
+ app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader(
+    'Access-Control-Allow-Methods',
+    'OPTIONS, GET, POST, PUT, PATCH, DELETE'
+  );
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   next();
 });
 
+app.use((error, req, res, next) => {
+  console.log(error);
+  const status = error.statusCode || 500;
+  const message = error.message;
+  const data = error.data;
+  res.status(status).json({ message: message, data: data });
+});
 
-//Connect to database
-mongoose.connect(process.env.DB_CONNECT, 
-{useNewUrlParser: true, useUnifiedTopology: true},
-() => console.log('Success! Connected to db!')
-);
 
 //Middleware
 app.use(express.json());
@@ -51,10 +43,15 @@ app.use(express.json());
 //Route Middleeware
 app.use('/api', authRoute);
 
+//Connect to database
+mongoose.connect(process.env.DB_CONNECT, 
+{useNewUrlParser: true, useUnifiedTopology: true},
+() => console.log('Success! Connected to db!')
+);
 
 
 //Listen to server
-app.listen(3000, () => console.log('Server is Running'));
+app.listen(3000,  "192.168.0.87", () => console.log('Server is Running'));
 
 
 module.exports = app;

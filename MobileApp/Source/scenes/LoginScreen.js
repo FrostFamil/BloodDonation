@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import {
   View, Image, TextInput, Button
 } from 'react-native';
+import LoginRequest from '../Requests/LoginRequest';
 
 const logoImage = require('../assets/icon.png');
 
@@ -14,7 +15,14 @@ class LoginScreen extends Component {
 
   onLoginButtonPressed = () => {
     const { navigation } = this.props;
-    navigation.navigate('Home');
+    const { email, password } = this.state;
+
+    LoginRequest(email, password).then((res) => {
+      if (res) {
+        global.userId = res.userId;
+        navigation.navigate('Home');
+      }
+    });
   };
 
   onRegisterButtonPressed = () => {
@@ -31,7 +39,7 @@ class LoginScreen extends Component {
           height: '100%',
           width: '100%',
           alignItems: 'center',
-          justifyContent: 'center',
+          justifyContent: 'flex-start',
         }}
       >
         <View
