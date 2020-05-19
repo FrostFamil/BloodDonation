@@ -7,6 +7,7 @@ import {
 import MapView, { Marker } from 'react-native-maps';
 import Modal from 'react-native-modal';
 import { FontAwesome, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import AcceptRequest from '../Requests/AcceptRequest';
 
 const { height, width } = Dimensions.get('screen');
 
@@ -19,6 +20,17 @@ class RequestScreen extends Component {
   goBack = () => {
     const { navigation } = this.props;
     navigation.navigate('Home');
+  }
+
+  accept = () => {
+    const requestId = global.requestId;
+    const acceptor = global.userId;
+    console.log(requestId);
+    AcceptRequest(requestId, acceptor).then(res => {
+      console.log(res);
+      this.goBack();
+    }).catch(err => console.log(err));
+  
   }
 
   renderParking = () => (
@@ -114,6 +126,17 @@ class RequestScreen extends Component {
               <FontAwesome name="angle-right" size={16 * 1.75} color="#FFFFFF" />
             </TouchableOpacity>
           </View>
+          {
+            !global.isAccepted ? (
+              <View style={{marginTop: 10}}>
+                <TouchableOpacity style={styles.payBtn} onPress={() => this.accept()}>
+                  <Text style={styles.payText}>
+                    Accept
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            ) : (null)
+          }
         </View>
       </Modal>
     );

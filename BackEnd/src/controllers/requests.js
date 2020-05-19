@@ -39,7 +39,7 @@ exports.request = (async (req,res) => {
 
 
 exports.fetchAllRequests = (async (req,res) => {
-       Request.find().then(result => {
+       Request.find({accepted: 'No'}).then(result => {
           console.log(result);
            return result;
        })
