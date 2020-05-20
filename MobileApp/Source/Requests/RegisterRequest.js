@@ -3,7 +3,7 @@ import url from './baseURL';
 
 const RegisterRequest = (firstName, lastName, email, password) => axios({
   method: 'post',
-  url: `http://${url.BASE_URL}:3000/api/user/register`,
+  url: `${url.BASE_URL}/api/user/register`,
   data: {
     first_name: firstName,
     last_name: lastName,

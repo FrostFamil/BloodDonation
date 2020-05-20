@@ -1,3 +1,3 @@
 export default {
-  BASE_URL: '192.168.0.87'
+  BASE_URL: 'https://blood-donation1.herokuapp.com'
 };
