@@ -45,11 +45,13 @@ class HomeScreen extends React.Component {
     const acceptor = global.userId;
 
     Requests().then((res) => {
-      this.setState({ requests: res.requests });
-    });
-
-    AvailableRequests(acceptor).then((res) => {
-      this.setState({ availableRequests: res.requests });
+      const all = res.requests;
+      AvailableRequests(acceptor).then((response) => {
+        this.setState({ 
+          availableRequests: response.requests,
+          requests: all.concat(response.requests)
+        });
+      });
     });
   }
 
@@ -57,11 +59,13 @@ class HomeScreen extends React.Component {
     const acceptor = global.userId;
 
     Requests().then((res) => {
-      this.setState({ requests: res.requests });
-    });
-
-    AvailableRequests(acceptor).then((res) => {
-      this.setState({ availableRequests: res.requests });
+      const all = res.requests;
+      AvailableRequests(acceptor).then((response) => {
+        this.setState({ 
+          availableRequests: response.requests,
+          requests: all.concat(response.requests)
+        });
+      });
     });
   }
 
@@ -223,7 +227,12 @@ class HomeScreen extends React.Component {
         </Block>
         <ScrollView showsVerticalScrollIndicator={false}>
           {requests.map((request) => (
-            <TouchableOpacity activeOpacity={0.8} key={`request-${request._id}`} onPress={() => navigation.navigate('Request')}>
+            <TouchableOpacity activeOpacity={0.8} key={`request-${request._id}`} 
+              onPress={() => {
+                global.requestId = request._id;
+                global.isAccepted = request.accepted === 'Yes';
+                navigation.navigate('Request');
+              }}>
               {this.renderRequest(request)}
             </TouchableOpacity>
           ))}
