@@ -1,3 +1,5 @@
+/* eslint-disable arrow-parens */
+/* eslint-disable prefer-destructuring */
 /* eslint-disable react/no-unused-state */
 /* eslint-disable react/state-in-constructor */
 import React, { Component } from 'react';
@@ -30,7 +32,6 @@ class RequestScreen extends Component {
       console.log(res);
       this.goBack();
     }).catch(err => console.log(err));
-  
   }
 
   renderParking = () => (
@@ -128,7 +129,7 @@ class RequestScreen extends Component {
           </View>
           {
             !global.isAccepted ? (
-              <View style={{marginTop: 10}}>
+              <View style={{ marginTop: 10 }}>
                 <TouchableOpacity style={styles.payBtn} onPress={() => this.accept()}>
                   <Text style={styles.payText}>
                     Accept

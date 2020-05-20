@@ -33,7 +33,7 @@ class RegistrationScreen extends Component {
     render() {
       const { navigation } = this.props;
       const {
-        firstName, lastName, email, password, confirmPassword
+        firstName, lastName, email, password
       } = this.state;
       return (
         <View

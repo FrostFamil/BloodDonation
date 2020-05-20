@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable global-require */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable react/sort-comp */
@@ -47,7 +48,7 @@ class HomeScreen extends React.Component {
     Requests().then((res) => {
       const all = res.requests;
       AvailableRequests(acceptor).then((response) => {
-        this.setState({ 
+        this.setState({
           availableRequests: response.requests,
           requests: all.concat(response.requests)
         });
@@ -61,7 +62,7 @@ class HomeScreen extends React.Component {
     Requests().then((res) => {
       const all = res.requests;
       AvailableRequests(acceptor).then((response) => {
-        this.setState({ 
+        this.setState({
           availableRequests: response.requests,
           requests: all.concat(response.requests)
         });
@@ -227,12 +228,15 @@ class HomeScreen extends React.Component {
         </Block>
         <ScrollView showsVerticalScrollIndicator={false}>
           {requests.map((request) => (
-            <TouchableOpacity activeOpacity={0.8} key={`request-${request._id}`} 
+            <TouchableOpacity
+              activeOpacity={0.8}
+              key={`request-${request._id}`}
               onPress={() => {
                 global.requestId = request._id;
                 global.isAccepted = request.accepted === 'Yes';
                 navigation.navigate('Request');
-              }}>
+              }}
+            >
               {this.renderRequest(request)}
             </TouchableOpacity>
           ))}

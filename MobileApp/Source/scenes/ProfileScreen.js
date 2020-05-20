@@ -1,3 +1,8 @@
+/* eslint-disable semi */
+/* eslint-disable react/no-unused-state */
+/* eslint-disable no-multi-spaces */
+/* eslint-disable arrow-parens */
+/* eslint-disable react/no-deprecated */
 /* eslint-disable global-require */
 import React, { Component } from 'react';
 import {
