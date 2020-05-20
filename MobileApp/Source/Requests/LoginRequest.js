@@ -3,7 +3,7 @@ import url from './baseURL';
 
 const LoginRequest = (email, password) => axios({
   method: 'post',
-  url: `http://${url.BASE_URL}:3000/api/user/login`,
+  url: `${url.BASE_URL}/api/user/login`,
   data: {
     email,
     password

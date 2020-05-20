@@ -3,7 +3,7 @@ import url from './baseURL';
 
 const AvailableRequests = (acceptor) => axios({
   method: 'post',
-  url: `http://${url.BASE_URL}:3000/api/user/userFetchSpecificRequests`,
+  url: `${url.BASE_URL}/api/user/userFetchSpecificRequests`,
   data: {
     acceptor
   }

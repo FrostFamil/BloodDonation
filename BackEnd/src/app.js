@@ -44,14 +44,14 @@ app.use(express.json());
 app.use('/api', authRoute);
 
 //Connect to database
-mongoose.connect(process.env.DB_CONNECT, 
+mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0-cim8y.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`, 
 {useNewUrlParser: true, useUnifiedTopology: true},
 () => console.log('Success! Connected to db!')
 );
 
 
 //Listen to server
-app.listen(3000,  "192.168.0.87", () => console.log('Server is Running'));
+app.listen(process.env.PORT || 3000);
 
 
 module.exports = app;
