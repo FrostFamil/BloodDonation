@@ -26,6 +26,8 @@ class RegistrationScreen extends Component {
       RegisterRequest(firstName, lastName, email, password).then((res) => {
         if (res) {
           navigation.navigate('Login');
+        } else {
+          alert("Entered data is not in proper format");
         }
       });
     }
