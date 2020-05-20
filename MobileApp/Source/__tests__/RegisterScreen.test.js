@@ -43,15 +43,5 @@ describe('Register', () => {
       // use toEqual check value TextInput
       expect(getByTestId('password').props.value).toEqual('adminpass');
     });
-
-    it('Change confirmPassword input content', () => {
-      const { getByTestId } = render(<RegisterScreen />);
-
-      // use fireEvent change value TextInput
-      fireEvent.changeText(getByTestId('confirmPassword'), 'adminpass');
-
-      // use toEqual check value TextInput
-      expect(getByTestId('confirmPassword').props.value).toEqual('adminpass');
-    });
   });
 });
