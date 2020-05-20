@@ -3,7 +3,7 @@ import url from './baseURL';
 
 const ProfileRequest = (userId) => axios({
   method: 'post',
-  url: `http://${url.BASE_URL}:3000/api/user/getUserData`,
+  url: `${url.BASE_URL}/api/user/getUserData`,
   data: {
     userId
   }

@@ -3,7 +3,7 @@ import url from './baseURL';
 
 const AcceptRequest = (requestIndex, acceptor) => axios({
   method: 'post',
-  url: `http://${url.BASE_URL}:3000/api/user/acceptRequest`,
+  url: `${url.BASE_URL}/api/user/acceptRequest`,
   data: {
     requestIndex,
     acceptor
