@@ -133,7 +133,7 @@ class HomeScreen extends React.Component {
               <Text h1>{requests.length - availableRequests.length}</Text>
               <Text caption bold tertiary style={{ paddingHorizontal: 10 }}>
                 +
-                {(3 / 4) * 100}
+                {parseInt(availableRequests.length / requests.length * 100)}
                 %
               </Text>
             </Block>
@@ -232,8 +232,7 @@ class HomeScreen extends React.Component {
               activeOpacity={0.8}
               key={`request-${request._id}`}
               onPress={() => {
-                global.requestId = request._id;
-                global.isAccepted = request.accepted === 'Yes';
+                global.currentRequest = request;
                 navigation.navigate('Request');
               }}
             >
