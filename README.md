@@ -7,19 +7,16 @@ Also we will add instructions for how to run tests on all 3 platforms.
 *For Running and Testing App on Mobile Phone:
 
 1) Download Expo app to your mobile phone.
-2) Clone or download this project to your PC.
-3) Open MobileApp folder and in there open Source folder.
-4) While inside source folder open terminal in this directory and run the script in this file called "build-test-run.sh"
-5) Script above will do everything starting from build to test(test files are in in _test_ folder).
-6) After webpage opened in PC's default browser scan the QR code on the left-Bottom corner with Expo app in your Mobile        phone.
-7) Done! you are ready to test the app.
+2) Open the Expo app and login with these credentials:
+   Login: blood_donation
+   Password: blood123
+3) Open Profile Tab in the Expo app and test the app which is under the text called Published Projects.
+4) Done! you are ready to test the app.
   
 *For Running and Testing Backend:
 
-1) Clone or download this project to your PC.
-2) Open BackEnd folder and in there open src folder.
-3) While inside src folder open terminal in this directory and run the script in this file called "build-test-run.sh".
-4) Done! backend ready to be used.
+1) No need to run backend locally since we uploaded backend to Heroku which is available 24/7
+2) You just open the app the use it
 
 
 
