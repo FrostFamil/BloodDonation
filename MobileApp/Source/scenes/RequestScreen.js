@@ -25,7 +25,7 @@ class RequestScreen extends Component {
   }
 
   accept = () => {
-    const requestId = global.requestId;
+    const requestId = global.currentRequest._id;
     const acceptor = global.userId;
     console.log(requestId);
     AcceptRequest(requestId, acceptor).then(res => {
@@ -39,16 +39,16 @@ class RequestScreen extends Component {
       <View style={styles.parkings}>
         <View style={[styles.parking, styles.shadow]}>
           <View style={styles.hours}>
-            <Text style={styles.hoursTitle}>BloodDonation</Text>
+            <Text style={styles.hoursTitle}>{global.currentRequest.hosp_name}</Text>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <Text style={{ color: '#7D818A' }}>11.05.2020</Text>
+              <Text style={{ color: '#7D818A' }}>{global.currentRequest.date.substr(0,10)}</Text>
             </View>
           </View>
           <View style={styles.parkingInfoContainer}>
             <View style={styles.parkingInfo}>
               <View style={styles.parkingIcon}>
-                <Ionicons name="ios-star" size={16} color="#7D818A" />
-                <Text style={{ marginLeft: 12 }}> 4.5</Text>
+                {/* <Ionicons name="ios-star" size={16} color="#7D818A" /> */}
+                <Text style={{ marginLeft: 12 }}>{global.currentRequest.blood_type}</Text>
               </View>
             </View>
             <TouchableOpacity
@@ -88,38 +88,46 @@ class RequestScreen extends Component {
         <View style={styles.modal}>
           <View>
             <Text style={{ fontSize: 16 * 1.5 }}>
-              BloodDonation
+              {global.currentRequest.hosp_name}
             </Text>
           </View>
           <View style={{ paddingVertical: 12 }}>
             <Text style={{ color: '#7D818A', fontSize: 16 * 1.1 }}>
-              Need an urgent Blood Donation to Hospital
+            {global.currentRequest.date.replace('T',' ').substr(0, 19)}
             </Text>
           </View>
           <View style={styles.modalInfo}>
             <View style={[styles.parkingIcon, { justifyContent: 'flex-start' }]}>
-              <Ionicons name="ios-star" size={16 * 1.1} color="#7D818A" />
-              <Text style={{ fontSize: 16 * 1.15 }}>4.5</Text>
+              {/* <Ionicons name="ios-star" size={16 * 1.1} color="#7D818A" /> */}
+              <Text style={{ fontSize: 16 * 1.15 }}>{global.currentRequest.blood_type}</Text>
             </View>
             <View style={[styles.parkingIcon, { justifyContent: 'flex-start' }]}>
-              <Ionicons name="ios-pin" size={16 * 1.1} color="#7D818A" />
-              <Text style={{ fontSize: 16 * 1.15 }}>Available</Text>
+              {/* <Ionicons name="ios-pin" size={16 * 1.1} color="#7D818A" /> */}
+              <Text style={{ fontSize: 16 * 1.15 }}>
+                {global.currentRequest.accepted !== 'Yes' ? "Accepted" : "Available"}
+              </Text>
             </View>
           </View>
           <View style={{ alignItems: 'center' }}>
             <Text style={{ fontSize: 15, color: '#A5A5A5', paddingBottom: 5 }}>Information about Request</Text>
           </View>
           <View style={{ flexDirection: 'row', bottom: 5 }}>
-            <Text style={{ fontSize: 15, color: 'red' }}>Scheduled for: </Text>
-            <Text>11.05.2020</Text>
+            <Text style={{ fontSize: 15, color: 'red' }}>Name: </Text>
+            <Text>
+              {global.currentRequest.first_name + ' ' + global.currentRequest.last_name}
+            </Text>
           </View>
 
           <View style={{ flexDirection: 'row', bottom: 5 }}>
-            <Text style={{ fontSize: 15, color: 'red' }}>Address: </Text>
-            <Text>Ehmedli</Text>
+            <Text style={{ fontSize: 15, color: 'red' }}>Gender: </Text>
+            <Text>{global.currentRequest.gender}</Text>
+          </View>
+          <View style={{ flexDirection: 'row', bottom: 5 }}>
+            <Text style={{ fontSize: 15, color: 'red' }}>Age: </Text>
+            <Text>{global.currentRequest.age}</Text>
           </View>
 
-          <View>
+          <View style={{marginTop: 10}}>
             <TouchableOpacity style={styles.payBtn} onPress={() => this.goBack()}>
               <Text style={styles.payText}>
                 Go Back
@@ -128,7 +136,7 @@ class RequestScreen extends Component {
             </TouchableOpacity>
           </View>
           {
-            !global.isAccepted ? (
+            global.currentRequest.accepted !== 'Yes' ? (
               <View style={{ marginTop: 10 }}>
                 <TouchableOpacity style={styles.payBtn} onPress={() => this.accept()}>
                   <Text style={styles.payText}>
