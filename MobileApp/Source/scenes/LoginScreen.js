@@ -21,6 +21,8 @@ class LoginScreen extends Component {
       if (res) {
         global.userId = res.userId;
         navigation.navigate('Home');
+      } else {
+        alert("Email or password is wrong");
       }
     });
   };
