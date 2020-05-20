@@ -4,22 +4,35 @@ import {
   View, Image, Text, TouchableOpacity
 } from 'react-native';
 import { CardSection, SettingInput } from '../components';
+import ProfileRequest from '../Requests/ProfileRequest';
 
 export default class ProfileScreen extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      fName: 'Jon',
-      lName: 'Snow',
-      email: 'jon@snow.com',
-      phone: '12345'
+      fName: '',
+      lName: '',
+      email: '',
+      phone: '0'
     };
+  }
+
+  componentWillMount() {
+    ProfileRequest(global.userId).then(res  => {
+      console.log(res);
+      this.setState({
+        fName: res.result.first_name,
+        lName: res.result.last_name,
+        email: res.result.email,
+        points: res.result.points
+      })
+    });
   }
 
   render() {
     const {
-      fName, lName, email, phone
+      fName, lName, email, points
     } = this.state;
     const { navigation } = this.props;
     return (
@@ -67,16 +80,16 @@ export default class ProfileScreen extends Component {
         <CardSection>
           <SettingInput
             testID="phone"
-            placeholder="+(Country code) 50-465-34-43"
-            label="Phone:"
-            value={phone}
-            onChangeText={(text) => this.setState({ phone: text })}
+            placeholder="0"
+            label="Points:"
+            value={points}
+            onChangeText={(text) => this.setState({ points: text })}
           />
         </CardSection>
 
         <View style={styles.ButtonStyle}>
           <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-            <Text style={{ fontSize: 30 }}>Back</Text>
+            <Text style={{ fontSize: 26, color: 'white' }}>Back</Text>
           </TouchableOpacity>
         </View>
 
