@@ -12,6 +12,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { DonationsComponent } from './donations/donations.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './services/auth-interceptor';
+import { CreatePageComponent } from './create-page/create-page.component';
 
 
 
@@ -22,7 +23,8 @@ import { AuthInterceptor } from './services/auth-interceptor';
     HeaderComponent,
     routingComponents,
     RegistrationComponent,
-    DonationsComponent
+    DonationsComponent,
+    CreatePageComponent
   ],
   imports: [
     BrowserModule,

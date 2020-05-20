@@ -4,6 +4,8 @@ import { AuthData } from './auth-data.model';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 
+const baseUrl = 'https://blood-donation1.herokuapp.com';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -30,7 +32,7 @@ export class AuthenticationService {
 
   register(name: string, email: string, password: string) {
     const authData: AuthData = {name, email, password};
-    this.http.post('http://localhost:3000/api/hospital/register', authData)
+    this.http.post(baseUrl + 'api/hospital/register', authData)
       .subscribe(response => {
         console.log('response is: ', response);
       });
@@ -38,7 +40,7 @@ export class AuthenticationService {
 
   login(email: string, password: string) {
     const authData: AuthData = {email, password};
-    this.http.post<{token: string, expiresIn: number}>('http://localhost:3000/api/hospital/login', authData)
+    this.http.post<{token: string, expiresIn: number}>(baseUrl + '/api/hospital/login', authData)
       .subscribe(resData => {
         const token = resData.token;
         this.token = token;
