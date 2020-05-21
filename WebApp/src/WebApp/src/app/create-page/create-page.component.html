@@ -1,2 +1,52 @@
 <app-header></app-header>
-<p>create-page works!</p>
+<div class="wrapper">
+  <mat-card class="addition-card">
+    <form [formGroup]="additionForm" (submit)="onAddition()">
+      <mat-form-field class="example-full-width">
+        <mat-label>Hospital Name</mat-label>
+          <input matInput formControlName="hospitalName">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName">
+          <mat-error *ngIf="!additionForm.get('firstName').valid">
+            Not a valid name
+          </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName">
+          <mat-error *ngIf="!additionForm.get('lastName').valid">
+            Error: No Last Name
+          </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Gender</mat-label>
+        <input matInput formControlName="gender">
+        <mat-error *ngIf="additionForm.get('gender').errors">
+          Error: No gender
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Age</mat-label>
+        <input matInput formControlName="age">
+        <mat-error *ngIf="additionForm.get('age').errors">
+          Error: No age
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Blood Type</mat-label>
+        <input matInput formControlName="bloodType">
+        <mat-error *ngIf="additionForm.get('bloodType').errors">
+          Error: No blood type
+        </mat-error>
+      </mat-form-field>
+      <button
+        mat-flat-button
+        color="primary"
+        [disabled]="!additionForm.valid">
+        Create Request
+      </button>
+    </form>
+  </mat-card>
+</div>
