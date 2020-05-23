@@ -18,6 +18,10 @@ Also we will add instructions for how to run tests on all 3 platforms.
 1) No need to run backend locally since we uploaded backend to Heroku which is available 24/7
 2) You just open the app the use it
 
+*To run the frontend: 
+1) npm install
+2) Will open a tab in the browser with the application: ng serve --open
+
 
 
 
