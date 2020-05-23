@@ -1,0 +1,37 @@
+<app-header></app-header>
+<div class="wrapper">
+  <mat-card class="addition-card">
+    <form [formGroup]="additionForm" (submit)="onAddition()">
+      <mat-form-field class="example-full-width">
+        <mat-label>Hospital Name</mat-label>
+          <input matInput formControlName="hospitalName">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName">
+      </mat-form-field>
+      <mat-form-field>
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Gender</mat-label>
+        <input matInput formControlName="gender">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Age</mat-label>
+        <input matInput formControlName="age">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Blood Type</mat-label>
+        <input matInput formControlName="bloodType">
+      </mat-form-field>
+      <button
+        mat-flat-button
+        color="primary"
+        [disabled]="!additionForm.valid">
+        Create Request
+      </button>
+    </form>
+  </mat-card>
+</div>
