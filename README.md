@@ -19,9 +19,11 @@ Also we will add instructions for how to run tests on all 3 platforms.
 2) You just open the app the use it
 
 *To run the frontend: 
-1) Paste this into the command line where the project folder is: npm install
-2) After that write this line into the command line,
-it will open a tab in the browser with the application: ng serve --open
+1) Clone this project to your Computer
+2) Then open folder called WebApp/src/WebApp
+3) While inside this folder paste this into the command line: npm install
+4) Then after that command finished type this: npm install -g @angular/cli
+5) After that write this line into the command line, it will open a tab in the browser with the application: ng serve --open
 
 
 
