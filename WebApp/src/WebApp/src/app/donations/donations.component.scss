@@ -1,0 +1,12 @@
+::ng-deep {
+  .mat-list-item-content {
+      justify-content: space-between;
+  }
+}
+
+.no-donations {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+

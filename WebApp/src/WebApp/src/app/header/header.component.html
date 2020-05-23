@@ -1,7 +1,9 @@
 <mat-toolbar color="primary">
   Blood donation
-  <button mat-button *ngIf="!userIsAuthenticated" (click)="onRegister()">Register</button>
-  <button mat-button *ngIf="userIsAuthenticated" (click)="onCreate()">Create</button>
-  <button mat-button *ngIf="userIsAuthenticated" (click)="onDonations()">Donations</button>
-  <button mat-button *ngIf="userIsAuthenticated" (click)="onLogout()">Logout</button>
+  <div class="buttons">
+    <button mat-button *ngIf="!userIsAuthenticated" (click)="onRegister()">Register</button>
+    <button mat-button *ngIf="userIsAuthenticated" (click)="onCreate()">Create</button>
+    <button mat-button *ngIf="userIsAuthenticated" (click)="onDonations()">Donations</button>
+    <button mat-button *ngIf="userIsAuthenticated" (click)="onLogout()">Logout</button>
+  </div>
 </mat-toolbar>

@@ -34,8 +34,8 @@ export class CreatePageComponent implements OnInit {
       this.requestsService.postRequest(
         // this.authService.getUserId(),
         // this.authService.getUserId(),
-        '5e9b7632b8294ca75f04709b',
-        '5e9b7632b8294ca75f04709b',
+        localStorage.getItem('userId'),
+        localStorage.getItem('userId'),
         this.additionForm.value.hospitalName,
         this.additionForm.value.firstName,
         this.additionForm.value.lastName,
@@ -43,8 +43,9 @@ export class CreatePageComponent implements OnInit {
         this.additionForm.value.age,
         this.additionForm.value.bloodType
       );
-      this.router.navigate(['/donations']);
+      // this.router.navigate(['/donations']);
     }
+    this.additionForm.reset();
   }
 
 }

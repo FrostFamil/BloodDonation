@@ -1,2 +1,62 @@
 <app-header></app-header>
-<button mat-button (click)="onFetchSpecificRequests()">Fetch</button>
+<mat-list>
+  <mat-list-item *ngFor="let donation of donations">
+    <div>
+      <span>
+        Accepted:
+        {{ donation.accepted }}
+      </span>
+    </div>
+    <div>
+      <span>
+        Age:
+        {{ donation.age }}
+      </span>
+    </div>
+    <div>
+      <span>
+        First name:
+        {{ donation.first_name }}
+      </span>
+    </div>
+    <div>
+      <span>
+        Last name:
+        {{ donation.last_name }}
+      </span>
+    </div>
+    <div>
+      <span>
+        Gender:
+        {{ donation.gender }}
+      </span>
+    </div>
+    <div>
+      <span>
+        Blood Type:
+        {{ donation.blood_type }}
+      </span>
+    </div>
+    <div class="buttons">
+      <button 
+        mat-raised-button 
+        color="primary" 
+        (click)="onCancel(donation._id)">
+          CANCEL
+      </button>
+      <button 
+        mat-raised-button 
+        color="primary" 
+        (click)="onDelete(donation._id)">
+          DELETE
+      </button>
+      <button 
+        mat-raised-button 
+        color="primary" 
+        (click)="onFinish(donation._id)">
+          FINISH
+      </button>
+    </div>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-list>

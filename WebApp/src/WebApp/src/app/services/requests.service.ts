@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 const baseUrl = 'https://blood-donation1.herokuapp.com';
@@ -34,5 +34,27 @@ export class RequestsService {
   fetchAllRequests(): Observable<any> {
     return this.http.get(baseUrl + '/api/user/fetchAllRequests',
     {observe: 'response'});
+  }
+
+  deleteRequest(id: string): Observable<any> {
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      observe: 'response',
+      body: {
+        id
+      },
+    };
+    return this.http.delete(baseUrl + '/api/hospital/deleteRequest/', options as any);
+  }
+
+  finishPoints(requestIndex): Observable<any> {
+    return this.http.post(baseUrl + '/api/hospital/managePoints', {requestIndex}, {observe: 'response'});
+  }
+
+  cancelRequest(creator, requestIndex): Observable<any> {
+    const cancelData = {creator, requestIndex}
+    return this.http.post(baseUrl + '/api/hospital/cancelRequest', cancelData);
   }
 }
