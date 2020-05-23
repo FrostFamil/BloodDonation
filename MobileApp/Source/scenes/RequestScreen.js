@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable arrow-parens */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable react/no-unused-state */
@@ -8,7 +10,7 @@ import {
 } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import Modal from 'react-native-modal';
-import { FontAwesome, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 import AcceptRequest from '../Requests/AcceptRequest';
 
 const { height, width } = Dimensions.get('screen');
@@ -41,7 +43,7 @@ class RequestScreen extends Component {
           <View style={styles.hours}>
             <Text style={styles.hoursTitle}>{global.currentRequest.hosp_name}</Text>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <Text style={{ color: '#7D818A' }}>{global.currentRequest.date.substr(0,10)}</Text>
+              <Text style={{ color: '#7D818A' }}>{global.currentRequest.date.substr(0, 10)}</Text>
             </View>
           </View>
           <View style={styles.parkingInfoContainer}>
@@ -93,7 +95,7 @@ class RequestScreen extends Component {
           </View>
           <View style={{ paddingVertical: 12 }}>
             <Text style={{ color: '#7D818A', fontSize: 16 * 1.1 }}>
-            {global.currentRequest.date.replace('T',' ').substr(0, 19)}
+              {global.currentRequest.date.replace('T', ' ').substr(0, 19)}
             </Text>
           </View>
           <View style={styles.modalInfo}>
@@ -104,7 +106,7 @@ class RequestScreen extends Component {
             <View style={[styles.parkingIcon, { justifyContent: 'flex-start' }]}>
               {/* <Ionicons name="ios-pin" size={16 * 1.1} color="#7D818A" /> */}
               <Text style={{ fontSize: 16 * 1.15 }}>
-                {global.currentRequest.accepted !== 'Yes' ? "Accepted" : "Available"}
+                {global.currentRequest.accepted !== 'Yes' ? 'Accepted' : 'Available'}
               </Text>
             </View>
           </View>
@@ -114,7 +116,7 @@ class RequestScreen extends Component {
           <View style={{ flexDirection: 'row', bottom: 5 }}>
             <Text style={{ fontSize: 15, color: 'red' }}>Name: </Text>
             <Text>
-              {global.currentRequest.first_name + ' ' + global.currentRequest.last_name}
+              {`${global.currentRequest.first_name} ${global.currentRequest.last_name}`}
             </Text>
           </View>
 
@@ -127,7 +129,7 @@ class RequestScreen extends Component {
             <Text>{global.currentRequest.age}</Text>
           </View>
 
-          <View style={{marginTop: 10}}>
+          <View style={{ marginTop: 10 }}>
             <TouchableOpacity style={styles.payBtn} onPress={() => this.goBack()}>
               <Text style={styles.payText}>
                 Go Back

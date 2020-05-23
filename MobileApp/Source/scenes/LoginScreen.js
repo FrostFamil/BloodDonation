@@ -1,3 +1,6 @@
+/* eslint-disable no-undef */
+/* eslint-disable quotes */
+/* eslint-disable no-alert */
 /* eslint-disable react/state-in-constructor */
 import React, { Component } from 'react';
 import {

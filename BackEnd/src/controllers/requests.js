@@ -58,7 +58,7 @@ exports.fetchAllRequests = (async (req,res) => {
        });
 });
 
-exports.fetchSpecificRequests = (async (req,res) => {
+exports.fetchSpecificRequests = (req,res) => {
   Request.find({creator: req.body.creator }).then(result => {
      console.log(result);
       return result;
@@ -76,7 +76,7 @@ exports.fetchSpecificRequests = (async (req,res) => {
           error.statusCode = 500;
       }
   });
-});
+};
 
 exports.userFetchSpecificRequests = (async (req,res) => {
   const acceptor = req.body.acceptor;

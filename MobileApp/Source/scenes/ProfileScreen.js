@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable semi */
 /* eslint-disable react/no-unused-state */
 /* eslint-disable no-multi-spaces */

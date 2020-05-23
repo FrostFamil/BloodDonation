@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 /* eslint-disable no-undef */
 /* eslint-disable no-alert */
 /* eslint-disable react/state-in-constructor */

@@ -1,3 +1,5 @@
+/* eslint-disable no-mixed-operators */
+/* eslint-disable radix */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable global-require */
 /* eslint-disable class-methods-use-this */

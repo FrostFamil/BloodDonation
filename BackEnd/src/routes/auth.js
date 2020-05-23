@@ -12,7 +12,7 @@ router.post('/hospital/login', authController.hospLogin);
 
 router.get('/hospital/donations', authController.hospDonations);
 
-router.get('/hospital/createRequest', requestController.request);
+router.post('/hospital/createRequest', requestController.request);
 
 router.get('/user/fetchAllRequests', requestController.fetchAllRequests);
 
