@@ -106,7 +106,7 @@ class RequestScreen extends Component {
             <View style={[styles.parkingIcon, { justifyContent: 'flex-start' }]}>
               {/* <Ionicons name="ios-pin" size={16 * 1.1} color="#7D818A" /> */}
               <Text style={{ fontSize: 16 * 1.15 }}>
-                {global.currentRequest.accepted !== 'Yes' ? 'Accepted' : 'Available'}
+                {global.currentRequest.accepted === 'Yes' ? 'Accepted' : 'Not Accepted'}
               </Text>
             </View>
           </View>
