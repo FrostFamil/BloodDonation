@@ -12,6 +12,7 @@ Also we will add instructions for how to run tests on all 3 platforms.
    Password: blood123
 3) Open Profile Tab in the Expo app and test the app which is under the text called Published Projects.
 4) Done! you are ready to test the app.
+5) For logging in the app you can use these email: s.famil@box.az, password: secret , or create your own account
   
 *For Running and Testing Backend:
 
@@ -24,7 +25,7 @@ Also we will add instructions for how to run tests on all 3 platforms.
 3) While inside this folder paste this into the command line: npm install
 4) Then after that command finished type this: npm install -g @angular/cli
 5) After that write this line into the command line, it will open a tab in the browser with the application: ng serve --open
-
+6) For logging in the app you can use these email: arifamirov98@gmail.com, password: test9876 , or create your own account
 
 
 
